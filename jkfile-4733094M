@@ -10,11 +10,6 @@ pipeline {
 
         stage('ST2-4733094m') {
             steps {
-                script {
-                    sh 'docker rm -f svr-4733094m || true'
-                    
-                    sh 'docker run -dit --name svr-4733094m -p 32900:80 img-base-4733094m'
-                }
                 echo 'ST2-4733094m: Server Setup Completed'
             }
         }
