@@ -2,33 +2,33 @@ pipeline {
     agent any
 
     stages {
-        stage('ST1-4733094M') {
+        stage('ST1-4733094m') {
             steps {
-                echo 'ST1-4733094M: Setup Release Environment Completed.'
+                echo 'ST1-4733094m: Setup Release Environment Completed.'
             }
         }
 
-        stage('ST2-4733094M') {
+        stage('ST2-4733094m') {
             steps {
                 script {
-                    sh 'docker rm -f svr-4733094M || true'
+                    sh 'docker rm -f svr-4733094m || true'
                     
-                    sh 'docker run -dit --name svr-4733094M -p 32900:80 img-base-4733094m'
+                    sh 'docker run -dit --name svr-4733094m -p 32900:80 img-base-4733094m'
                 }
-                echo 'ST2-4733094M: Server Setup Completed'
+                echo 'ST2-4733094m: Server Setup Completed'
             }
         }
 
-        stage('ST3-Parallel-4733094M') {
+        stage('ST3-Parallel-4733094m') {
             parallel {
-                stage('ST3A-4733094M') {
+                stage('ST3A-4733094m') {
                     steps {
-                        echo 'ST3A-4733094M: X-Site Scripting (XSS) Test Completed and Report Generated'
+                        echo 'ST3A-4733094m: X-Site Scripting (XSS) Test Completed and Report Generated'
                     }
                 }
-                stage('ST3B-4733094M') {
+                stage('ST3B-4733094m') {
                     steps {
-                        echo 'ST3B-4733094M: SQL injection (SQLI) Test Completed and Report Generated'
+                        echo 'ST3B-4733094m: SQL injection (SQLI) Test Completed and Report Generated'
                     }
                 }
             }
