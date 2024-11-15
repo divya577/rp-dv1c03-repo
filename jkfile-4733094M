@@ -13,7 +13,7 @@ pipeline {
                 script {
                     sh 'docker rm -f svr-4733094M || true'
                     
-                    sh 'docker run -dit --name svr-4733094M -p 32900:80 img-base-4733094M'
+                    sh 'docker run -dit --name svr-4733094M -p 32900:80 img-base-4733094m'
                 }
                 echo 'ST2-4733094M: Server Setup Completed'
             }
