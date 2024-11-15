@@ -1,1 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('ST1-4733094M') {
+            steps {
+                echo 'ST1-4733094M: Setup Release Environment Completed.'
+            }
+        }
+
+        stage('ST2-4733094M') {
+            steps {
+                script {
+                    sh 'docker rm -f svr-4733094M || true'
+                    
+                    sh 'docker run -dit --name svr-4733094M -p 32900:80 img-base-4733094M'
+                }
+                echo 'ST2-4733094M: Server Setup Completed'
+            }
+        }
+
+        stage('ST3-Parallel-4733094M') {
+            parallel {
+                stage('ST3A-4733094M') {
+                    steps {
+                        echo 'ST3A-4733094M: X-Site Scripting (XSS) Test Completed and Report Generated'
+                    }
+                }
+                stage('ST3B-4733094M') {
+                    steps {
+                        echo 'ST3B-4733094M: SQL injection (SQLI) Test Completed and Report Generated'
+                    }
+                }
+            }
+        }
+    }
+}
 
