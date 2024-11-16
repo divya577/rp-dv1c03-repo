@@ -34,6 +34,30 @@ pipeline {
                 }
             }
         }
+      stage('ST4-4733094m') {
+            steps {
+                echo 'ST4-4733094m: Security reports are checked'
+            }
+        }
+        stage('ST5-4733094m') {
+            steps {
+                script {
+                    def userInput = input message: 'Hello 4733094m, permission to proceed to next phase?',
+                                        parameters: [choice(name: 'Action', choices: ['Proceed', 'Abort'], description: 'Choose an action')]
+                    
+                    if (userInput == 'Proceed') {
+                        echo 'ST5-4733094m: Approve to proceed to next phase'
+                    } else {
+                        error 'ST5-4733094m: Pipeline Aborted by User'
+                    }
+                }
+            }
+        }
+        stage('ST6-4733094m') {
+            steps {
+                echo 'ST6-4733094m: Ready for next phase'
+            }
+        }
     }
 }
 
