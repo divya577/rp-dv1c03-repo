@@ -51,7 +51,7 @@ pipeline {
                     if (userInput == 'Proceed') {
                         echo 'ST5-4733094m: Approve to proceed to next phase'
                     } else {
-                        error 'ST5-4733094m: Pipeline Aborted by User'
+                        error 'ST5-4733094m: Pipeline Aborted'
                     }
                 }
             }
