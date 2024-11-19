@@ -11,7 +11,9 @@ pipeline {
         stage('ST2-4733094m') {
             steps {
                 script {
+                    
                     sh 'docker rm -f svr-4733094m || true'
+
                     sh 'docker run -dit --name svr-4733094m -p 32900:80 img-base-4733094m'
                 }
                 echo 'ST2-4733094m: Server Setup Completed'
@@ -19,9 +21,6 @@ pipeline {
         }
 
         stage('ST3-Parallel-4733094m') {
-            steps {
-                echo 'ST3 Parallel-4733094m: Security Testing'
-            }
             parallel {
                 stage('ST3A-4733094m') {
                     steps {
@@ -36,12 +35,11 @@ pipeline {
             }
         }
 
-        stage('ST4-4733094m') {
+      stage('ST4-4733094m') {
             steps {
                 echo 'ST4-4733094m: Security reports are checked'
             }
         }
-
         stage('ST5-4733094m') {
             steps {
                 script {
@@ -56,7 +54,6 @@ pipeline {
                 }
             }
         }
-
         stage('ST6-4733094m') {
             steps {
                 echo 'ST6-4733094m: Ready for next phase'
