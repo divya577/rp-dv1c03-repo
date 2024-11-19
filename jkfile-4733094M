@@ -21,19 +21,22 @@ pipeline {
         }
 
         stage('ST3-Parallel-4733094m') {
-    parallel {
-        stage('ST3A-4733094m') {
             steps {
-                echo 'ST3A-4733094m: X-Site Scripting (XSS) Test Completed and Report Generated'
+                echo 'ST3 Parallel-4733094m: Security Testing'
+            }
+            parallel {
+                stage('ST3A-4733094m') {
+                    steps {
+                        echo 'ST3A-4733094m: X-Site Scripting (XSS) Test Completed and Report Generated'
+                    }
+                }
+                stage('ST3B-4733094m') {
+                    steps {
+                        echo 'ST3B-4733094m: SQL injection (SQLI) Test Completed and Report Generated'
+                    }
+                }
             }
         }
-        stage('ST3B-4733094m') {
-            steps {
-                echo 'ST3B-4733094m: SQL injection (SQLI) Test Completed and Report Generated'
-            }
-        }
-    }
-}
 
       stage('ST4-4733094m') {
             steps {
