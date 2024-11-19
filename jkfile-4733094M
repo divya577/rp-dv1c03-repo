@@ -21,9 +21,6 @@ pipeline {
         }
 
         stage('ST3-Parallel-4733094m') {
-    steps {
-        echo 'ST3 Parallel-4733094m: Security Testing'
-    }
     parallel {
         stage('ST3A-4733094m') {
             steps {
@@ -37,6 +34,7 @@ pipeline {
         }
     }
 }
+
       stage('ST4-4733094m') {
             steps {
                 echo 'ST4-4733094m: Security reports are checked'
